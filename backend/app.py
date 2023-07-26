@@ -1,6 +1,6 @@
 from flask import Flask
 
-app = Flask(__name__, template_folder="static", static_folder="static")
+app = Flask(__name__, template_folder="static")
 
 
 @app.route("/", defaults={"path": "index.html"})
@@ -11,4 +11,4 @@ def index_file(path):
 
 if __name__ == "__main__":
     print(app.url_map)
-    app.run()
+    app.run(debug=True)
