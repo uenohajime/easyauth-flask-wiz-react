@@ -1,7 +1,15 @@
+import { useCookies } from 'react-cookie';
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
 
 function App() {
+  const [cookies] = useCookies(['AppServiceAuthSession']);
+
+  useEffect(() => {
+    console.log(cookies);
+  }, [cookies]);
+
   return (
     <div className="App">
       <header className="App-header">
