@@ -1,6 +1,6 @@
 from flask import Flask
 
-app = Flask(__name__, template_folder="static")
+app = Flask(__name__)
 
 
 @app.route("/", defaults={"path": "index.html"})
