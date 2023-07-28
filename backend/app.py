@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -8,6 +8,11 @@ CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
 @app.route("/<path:path>")
 def index_file(path):
     return app.send_static_file(path)
+
+@app.route("/headers", methods=["GET"])
+def headers():
+    headers = request.headers
+    return jsonify(dict(headers))
 
 @app.after_request
 def after_request(response):

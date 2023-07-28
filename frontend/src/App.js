@@ -1,14 +1,12 @@
-import { useCookies } from 'react-cookie';
 import logo from './logo.svg';
 import './App.css';
-import { useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [cookies] = useCookies(['AppServiceAuthSession']);
-
-  useEffect(() => {
-    console.log(cookies);
-  }, [cookies]);
+  const handleBtnClicked = async (e) => {
+    const res = await axios.get('/headers');
+    console.log(res.data);
+  }
 
   return (
     <div className="App">
@@ -17,6 +15,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <button onClick={handleBtnClicked}>push</button>
         <a
           className="App-link"
           href="https://reactjs.org"
